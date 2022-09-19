@@ -8,16 +8,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class Scheduler {
-    private List<Server> servers;
-    private int maxNoServers;
-    private Strategy strategy;
+    private final List<Server> servers;
     public Thread[] threads;
 
-    public Scheduler(int maxNoServers){//, int maxTasksPerServer){
+    public Scheduler(int maxNoServers){
         threads = new Thread[200];
-        servers = Collections.synchronizedList(new ArrayList<Server>());
-        this.maxNoServers = maxNoServers;
-            for(int i = 0; i < maxNoServers; i++){
+        servers = Collections.synchronizedList(new ArrayList<>());
+        for(int i = 0; i < maxNoServers; i++){
 
                 Server s = new Server(i+1);
                 servers.add(s);
@@ -26,14 +23,7 @@ public class Scheduler {
             }
 
     }
-    public void changeStrategy(SelectionPolicy policy){
-        if(policy == SelectionPolicy.SHORTEST_QUEUE){
-            strategy = new ConcreteStrategyQueue();
-        }
-        if(policy == SelectionPolicy.SHORTEST_PATH) {
-            strategy = new ConcreteStrategyTime();
-        }
-    }
+
     public void dispatchTask(Task t) {
         //call the strategy addTask method
         int minn = Integer.MAX_VALUE;

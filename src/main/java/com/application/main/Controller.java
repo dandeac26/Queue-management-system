@@ -19,14 +19,14 @@ public class Controller {
 
     @FXML
     protected void onSimulationButtonClick() {
-        gen = new SimulationManager(output, Integer.parseInt(simt.getText()),Integer.parseInt(maxs.getText()),Integer.parseInt(mins.getText()),Integer.parseInt(maxar.getText()),Integer.parseInt(minar.getText()),Integer.parseInt(Queues.getText()),Integer.parseInt(Clients.getText()));
+        gen = new SimulationManager(output, Integer.parseInt(simt.getText()),Integer.parseInt(maxs.getText()),
+                Integer.parseInt(mins.getText()),Integer.parseInt(maxar.getText()),Integer.parseInt(minar.getText()),
+                Integer.parseInt(Queues.getText()),Integer.parseInt(Clients.getText()));
         Thread t = new Thread(gen);
-        //t.setDaemon(true);
         t.start();
     }
     @FXML
     protected void onExitClick() {
-        //System.out.println("Stopping...");
         if(gen != null){
             gen.exitApp();
         }

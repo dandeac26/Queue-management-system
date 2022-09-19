@@ -2,26 +2,16 @@ package Model;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Server extends Thread{
-    private BlockingQueue<Task> tasks; // priority blocking queue
-    private AtomicInteger waitingPeriod;
-    private int ID;
+    private final BlockingQueue<Task> tasks;
+    private final AtomicInteger waitingPeriod;
+    private final int ID;
     public boolean notExit = true;
 
     public int getID() {
         return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
-    public Server(){
-        tasks = new LinkedBlockingQueue<>();
-        waitingPeriod = new AtomicInteger(0);
     }
 
     public Server(int ID){
@@ -30,28 +20,22 @@ public class Server extends Thread{
         waitingPeriod = new AtomicInteger(0);
     }
 
-    public Server(BlockingQueue tasks){
-        this.tasks = tasks;
-    }
-
-    public BlockingQueue getTasks(){
-        return tasks;
-    }
-
     public String getTasksStr(){
-        String ss = "Queue" + this.getID() + " ";
+        StringBuilder ss = new StringBuilder("Queue" + this.getID() + " ");
         for(Task t : tasks){
-            ss += "[" + t.getID() + " " + t.getArrivalTime() + " "  + t.getServiceTime() + "] ";
+            ss.append("[").append(t.getID()).append(" ").append(t.getArrivalTime()).append(" ").append(t.getServiceTime()).append("] ");
         }
-        ss += "\n";
-        return ss;
+        ss.append("\n");
+        return ss.toString();
     }
     public void addTask(Task newTask){
         tasks.add(newTask);
         waitingPeriod.addAndGet(newTask.getServiceTime());
     }
     public void deleteTask(Task newTask){
-        tasks.remove(newTask);
+        if (!tasks.remove(newTask)){
+            System.out.println("Can't remove task " + newTask.getID());
+        }
         waitingPeriod.addAndGet(-1);
     }
     public int getWaitingPeriod(){
