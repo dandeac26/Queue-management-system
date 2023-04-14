@@ -32,7 +32,7 @@ The user interface provides an easy way to input the required data.
 ![input data](https://i.imgur.com/YjZXqVU.png)
 
 The log file will contain the following set of data:
-`
+```
 Current time: 1
 Waiting list:[6 2 2][4 5 3][3 7 2][7 7 2][2 10 4][5 11 2][1 13 2]
 Queue1 
@@ -62,7 +62,7 @@ Current time: 6
 Waiting list:[3 7 2][7 7 2][2 10 4][5 11 2][1 13 2]
 Queue1 
 Queue2 [4 5 2] 
-`
+```
 and so on...
 
 One of the trickier parts of the project was stopping the simulation and all the threads created by the program. However, a flag attribute named "notExit" was implemented to solve this problem.
