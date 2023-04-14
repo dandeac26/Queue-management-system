@@ -21,7 +21,7 @@ Class:
 ![Class diagram](https://i.imgur.com/6PqdV0e.png)
 
 
-### Simulation Manager Documentation
+### Simulation Manager
 
 In the `SimulationManager` class, the most important method is the `run()` method, which iterates through the clients and dispatches them as follows:
 ```java
