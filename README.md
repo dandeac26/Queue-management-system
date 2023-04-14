@@ -1,5 +1,7 @@
 # QUEUE MANAGEMENT APPLICATION
 
+![](https://i.imgur.com/6PqdV0e.png)
+
 ## Objectives
 The primary objective of this project is to create a queue management system that manages a list of clients in a series of servers and puts the client in the queue with the least waiting time. The secondary objectives are to create a user interface to input the required data for the project simulation, a simulation manager, a scheduler, a text file to keep logs of events every second, synchronization of threads, stop simulation, kill threads, generate a client list based on inputs, and update the user interface with the results of the program.
 
