@@ -144,6 +144,9 @@ Queue2 [4 5 2]
 ```
 and so on...
 
-One of the trickier parts of the project was stopping the simulation and all the threads created by the program. However, a flag attribute named "notExit" was implemented to solve this problem.
+##Conclusion
 
-The program can be useful in day-to-day scenarios where it is required to manage resources, especially time. Each task needs to be completed as fast as possible, so the best waiting time is calculated and based on it. The
+This project required implementation of a multithreaded java application. A good understanding of threads was required to complete this assignment, as well as thread synchronization and management. 
+In addition, working with output and logfiles and understanding how to trouble shoot a complicated output and how to properly display it to understand the capability of the application. 
+
+This documentation was put together with the help of ChatGPT for formatting and creating the markdown file. 
